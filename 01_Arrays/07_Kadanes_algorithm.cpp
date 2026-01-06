@@ -5,6 +5,8 @@
  */
 
 #include <iostream>
+#include <vector>
+#include <algorithm>
 using namespace std;
 
 // Q. Prefix(starting from begining) and Suffix (starting from last) Sum
@@ -58,6 +60,39 @@ int divideArrayIn2SubarrayWithEqualSum(int arr[], int n)
         }
     }
     return 0;
+}
+
+// Q. Largest sum Contiguous subarray.
+// Largest sum of subarray.
+long long LargestSumContiguousSubArray(int arr[], int n)
+{
+    /*
+     *  int arr[] = {4, 3, 7, 2}
+     * 1 size subarray = [4], [3], [7], [2] = 15
+     * 2 size subarray = [4,3], [3,7], [7,2] = sum => 7 + 10 + 9 => 26
+     * 3 size subarray = [4, 3, 7], [3,7,2] = sum => 14 + 12 => 26
+     * 4 size subArray = [4, 3, 7, 2] = sum => 16
+     * maximum subarray =
+     */
+    // This below shows the implementation of the kadane's algorithm.
+    long long maxi = INT_MIN, prefix = 0;
+    for (int i = 0; i < n; i++)
+    {
+        prefix += arr[i];
+        maxi = max(prefix, maxi);
+        if (prefix < 0)
+        {
+            prefix = 0;
+        }
+        return maxi;
+    }
+}
+
+// Q. Maximum Difference between 2 element.
+int maxDifferenceBetn2Elements(int arr[], int n)
+{
+    int ans;
+    return ans;
 }
 
 //
