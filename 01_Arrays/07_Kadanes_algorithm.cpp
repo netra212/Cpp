@@ -92,6 +92,13 @@ long long LargestSumContiguousSubArray(int arr[], int n)
 int maxDifferenceBetn2Elements(int arr[], int n)
 {
     int ans;
+    for (int i = 0; i < n - 1; i++)
+    {
+        for (int j = i + 1; j < n; j++)
+        {
+            ans = max(ans, arr[j] - arr[i]);
+        }
+    }
     return ans;
 }
 
