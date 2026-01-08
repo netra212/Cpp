@@ -146,6 +146,29 @@ vector<int> spiralForms(vector<vector<int>> &matrix, int row, int col)
     return ans;
 }
 
+// Q. Transpose Matrix.
+/**
+ * 1, 2, 3, 4
+ * 5, 6, 7, 8
+ * 9, 1, 2, 3
+ * 3, 4, 1, 2
+ *
+ */
+void transposeMatrix(vector<vector<int>> &matrix, int row, int col)
+{
+    vector<vector<int>> transposedMatrix(4, 4);
+    int n = matrix.size(); // size of rows.
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            transposedMatrix[j][i] = matrix[i][j];
+        }
+    }
+    // Time Complexity: O(n^2)
+    // Space Complexity: O(1)
+}
+
 // Program executed from below.
 int main()
 {
