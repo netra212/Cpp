@@ -11,6 +11,142 @@
 #include <algorithm>
 using namespace std;
 
+// Printing the values of 2D vectors in wave forms.
+
+/**
+ * 3, 6, 4, 2
+ * 7, 8, 11, 5
+ * 9, 3, 2, 1
+ * 17, 8, 5, 9
+ * Output value: 3, 7, 9, 17, 8, 3, 8, 6, 4, 11, 2, 5, 9, 1, 5, 2
+ * Approach:
+ * col -> even -> (up -> down)
+ * col -> odd -> (down -> up)
+ *
+ for(int j = 0; j < col; j++){
+    if(j%2 == 0){
+        // Print from up to down.
+        for(int i = 0; i < rows; i++){
+            cout << arr[i][j];
+        }
+    }
+    else{
+        // Print from down to up.
+        for(int i = row-1; i >= 0; i--){
+            cout << arr[i][j];
+        }
+    }
+ }
+ * Time Complexity:O(rowxcol)
+ *
+ *
+ */
+
+// Printing the 2D Vectors in wave forms.
+void waveForms(int arr[][4], int row, int col)
+{
+    //
+    for (int j = 0; j < col; j++)
+    {
+        if (j % 2 == 0)
+        {
+            for (int i = 0; i < row; i++)
+            {
+                cout << arr[i][j] << " ";
+            }
+        }
+        else
+        {
+            for (int i = row - 1; i >= 0; i--)
+            {
+                cout << arr[i][j] << " ";
+            }
+        }
+    }
+}
+
+// Printing the array in the spiral forms.
+// 3, 6, 49, 2
+// 7, 8, 11, 5
+// 9, 3, 21, 1
+// 1, 8, 51, 9
+// Approach or patterns: print top rows, then print right column, then print bottom rows, then print left column.
+/*
+ top = 0    (row)
+ right = 4  (column)
+ bottom = 4 (row)
+ left = 0   (column)
+
+ while(top <= bottom && left <= right){
+    for(int j = left; j <= right; j++){
+        cout << matrix[top][j];
+        top++;
+    }
+
+    for(int i = top; i <= bottom; i++){
+        cout << matrix[i][right];
+        right--;
+    }
+
+    for(int j = right; j>= left; j--){
+        cout << matrix[bottom][j];
+        bottom--;
+    }
+
+    for(int i = bottom; i>= top; i--){
+        cout << matrix[i][left]
+        left++;
+    }
+ }
+*/
+
+vector<int> spiralForms(vector<vector<int>> &matrix, int row, int col)
+{
+    vector<int> ans;
+    int row = matrix.size(), col = matrix[0].size();
+    int top = 0, bottom = row - 1, left = 0, right = col - 1;
+
+    while (left <= right && top <= bottom)
+    {
+        // print top.
+        for (int j = left; j <= right; j++)
+        {
+            ans.push_back(matrix[top][j]);
+            top++;
+        }
+
+        // print right.
+        for (int i = top; i <= bottom; i++)
+        {
+            ans.push_back(matrix[i][right]);
+            right--;
+        }
+
+        // print bottom.
+        if (top <= bottom)
+        {
+            for (int j = right; j >= left; j--)
+            {
+                ans.push_back(matrix[bottom][j]);
+                bottom--;
+            }
+        }
+
+        // print left.
+        if (left <= right)
+        {
+            for (int i = bottom; i >= top; i--)
+            {
+                ans.push_back(matrix[i][left]);
+                left++;
+            }
+        }
+    }
+
+    return ans;
+}
+
+// Program executed from below.
 int main()
 {
     int rows, column;
