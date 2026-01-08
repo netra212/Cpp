@@ -83,13 +83,73 @@ void addTwoMatrix()
 }
 
 // Q. Print row index with Max sum.
-void rowIndexWithMaxSum()
+void printRowIndexWithMaxSum(int arr[][4], int row, int col)
 {
     //
+    int index = -1, sum = INT_MIN;
+    for (int i = 0; i < row; i++)
+    {
+        int total = 0;
+        for (int j = 0; j < col; j++)
+        {
+            total += arr[i][j];
+
+            if (total > sum)
+            {
+                sum = total;
+                index = i;
+            }
+        }
+    }
+    cout << index << " ";
+}
+
+// Q. Print sum of diagonal Element.
+void printSumDiagonalElement(int matrix[][3], int row, int col)
+{
+    //
+    int firstDiagonalSum = 0;
+    int secondDiagonalSum = 0;
+
+    // Calculating first Diagonal sum.
+    int i = 0;
+    while (i < row)
+    {
+        firstDiagonalSum += matrix[i][i];
+    }
+
+    // Calculating second Diagonal sum.
+    i = 0;
+    int j = col - 1;
+    while (j >= 0)
+    {
+        secondDiagonalSum += matrix[i][j];
+        i++, j--;
+    }
+
+    cout << firstDiagonalSum << " " << endl;
+    cout << secondDiagonalSum << " " << endl;
+}
+
+// Reverse each row of matrix.
+void reverseEachRowMatrix(int arr[][3], int row, int col)
+{
+    //
+    for (int i = 0; i < row; i++)
+    {
+        int start = 0, end = col - 1;
+        while (start < end)
+        {
+            swap(arr[i][start], arr[i][end]);
+            start++, end--;
+        }
+    }
 }
 
 //
 int main()
 {
+    int matrix[3][3] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+    printSumDiagonalElement(matrix, 3, 3);
     return 0;
 }
