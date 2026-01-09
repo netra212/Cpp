@@ -2,7 +2,6 @@
  * This file is the part of the Lecture 35 of ther Coder Army youtube channels.
  * Topic Name: Majority Elements|| Count Frequency of element || Find Missing and Repeating elements.
  *
- *
  */
 #include <iostream>
 using namespace std;
@@ -14,22 +13,23 @@ void store2NumbersIn1Position()
     // store number and it's occurence.
     // 2, 2, 2, 2, 2, 2.
     // (2, Occurance)
-
+    // Approach
     // Number = 602 % 100 = 2
     // Occurence = 602 / 100 = 6
 }
 
-/***
- * 9 * 39 ->
- * Buying Rate: 9 || Selling Rate: 13
- * Front Road Side: 15 * 13 -> 180.
- * Cost to plot per kathha : 39 - 5
- * 50 * 13
- * 20 -> settlement.
- * 3 Crore 50 Lakhs.
- * Best scenarios : 20
- * Worst scenarios : 15
- */
+// Q. Find Missing and Repeating.
+void findMissingAndRepeating(vector<int> &array)
+{
+    // [4, 3, 2, 1, 2, 7, 6], N = 7
+    // Missing = 5
+    // Repeating = 2
+    /**
+     * Approach:
+     * Missing: total_sum_N - arr_sum
+     *
+     */
+}
 
 int main()
 {
