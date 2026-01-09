@@ -155,6 +155,22 @@ int findMajorityElementGreaterThanNDivide2(vector<int> &arr, int n)
             }
         }
     }
+    // count = 0;
+    // for (int i = 0; i < n; i++)
+    // {
+    //     if (arr[i] == candidate)
+    //     {
+    //         count++;
+    //     }
+    // }
+    // if (count > n / 2)
+    // {
+    //     return candidate;
+    // }
+    // else
+    // {
+    //     return -1;
+    // }
     return candidate;
 }
 
