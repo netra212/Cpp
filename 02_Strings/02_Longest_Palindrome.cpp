@@ -7,7 +7,7 @@
 using namespace std;
 
 // Q1. Longest Palindrome.
-void findLongestPalindrome(string s)
+int findLongestPalindrome(string s)
 {
     /**
      * aabbcbada
@@ -40,7 +40,7 @@ void findLongestPalindrome(string s)
     vector<int> lowerCharCount(26, 0);
     vector<int> upperCharCount(26, 0);
 
-    // Loop over the lower character.
+    // frequency updated.
     for (int i = 0; i < s.size(); i++)
     {
         if (s[i] >= 'a')
@@ -54,7 +54,9 @@ void findLongestPalindrome(string s)
     }
 
     int count = 0;
-    int odd = 0;
+    bool odd = 0;
+
+    //
     for (int i = 0; i < 26; i++)
     {
         // Even Case in Lower Character.
@@ -65,7 +67,7 @@ void findLongestPalindrome(string s)
         // Odd case in Lower character.
         else
         {
-            count += lowerCharCount[i];
+            count += lowerCharCount[i] - 1;
             odd = 1;
         }
 
@@ -77,10 +79,65 @@ void findLongestPalindrome(string s)
         // Odd case in Upper character.
         else
         {
-            count += upperCharCount[i];
+            count += upperCharCount[i] - 1;
             odd = 1;
         }
     }
+    int longestPalindromeAns = count + odd;
+    return longestPalindromeAns;
+}
+
+// Q. sorting the sentences.
+string sortingTSentences()
+{
+    /**
+     * s = "is2 sentence4 This1 a3"
+     * s = "Myself2 ME1 I4 and3"
+     * NOTE: Last Position of each word shows the index of that particular word.
+     * Loop over the particular string s, then fetch the first word, store word that word into a another temporary vector with string type... Like this.....!
+     * temp = 'Myself2'
+     * Now, we need to access the last character of the that word, which shows the index of that word.
+
+     * so, PositionOfParticularWord = temp[temp.size()-1]; // Accessing last character.
+     * so, we need to convert that 'PosWord' into an int.
+     *
+    // Accessing the character like this..
+    ParticularWord = temp.pop_back(); // remove the last character.
+     *
+     */
+
+    string s;
+    vector<string> ans(10);
+    string temp;
+    // count store the total number of words in the given string.
+    int count = 0, index = 0;
+    while (index < s.size())
+    {
+        if (s[index] == ' ')
+        {
+            // Accessing the index of that particular word.
+            int Pos = temp[temp.size() - 1] - '0'; // - '0' <-- indicates the converting from string into int type.
+            temp.pop_back();                       // removing last digit like 2.
+            temp.clear();
+            count++;
+        }
+        else
+        {
+            temp += s[index];
+            index++;
+        }
+    }
+
+    // Printing the ans vector.
+    for (int i = 1; i <= count; i++)
+    {
+        temp += ans[i];
+        temp += ' ';
+    }
+    temp.pop_back(); // removing the last space. because when we add the last character along with space... like this..
+    // 'myself netra khatri Ok '
+    // As we can seen in the above string, there is space in the last place so.
+    return temp;
 }
 
 //
