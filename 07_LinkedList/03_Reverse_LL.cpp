@@ -39,7 +39,55 @@ ListNode *reverseLinkedList(ListNode *head)
     return head;
 }
 
+// Reverse a Node.
+ListNode *reverseLinkedNode(ListNode *head)
+{
+    ListNode *curr = head, *prev = NULL, *future = NULL;
+    while (curr)
+    {
+        future = curr->next;
+        curr->next = prev;
+        prev = future;
+    }
+
+    head = prev;
+    return head;
+}
+
+// Reverse a LinkedList Using Recursion.
+ListNode *reverseLinkedListUsingRecursion(ListNode *curr, ListNode *prev)
+{
+    if (curr == NULL)
+    {
+        return prev;
+    }
+    ListNode *fut = curr->next;
+    curr->next = prev;
+    return reverseLinkedListUsingRecursion(fut, curr);
+}
+
+// Middle of LinkedList.
+ListNode *middleOfLinkedList(ListNode *head)
+{
+    int count = 0; // Count total number of nodes.
+    ListNode *temp = head;
+    while (temp != NULL)
+    {
+        count++;
+        temp = temp->next;
+    }
+
+    count /= 2;
+    temp = head;
+    while (count--)
+    {
+        temp = temp->next;
+    }
+    return temp;
+}
+
 //
 int main()
 {
+    //
 }
