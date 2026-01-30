@@ -86,8 +86,24 @@ ListNode *middleOfLinkedList(ListNode *head)
     return temp;
 }
 
+ListNode *middleOfLL(ListNode *head)
+{
+    ListNode *slowPointer = head, *fastPointer = head;
+    while (fastPointer != NULL && fastPointer->next != NULL)
+    {
+        slowPointer = slowPointer->next;
+        fastPointer = fastPointer->next->next;
+    }
+    return slowPointer;
+}
+
+/**
+ * slow pointer and fast pointer in Linked List.
+ *
+ */
+
 //
 int main()
 {
-    //
+    ListNode *head;
 }
