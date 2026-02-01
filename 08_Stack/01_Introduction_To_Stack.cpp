@@ -1,0 +1,95 @@
+#include <iostream>
+using namespace std;
+
+/**
+ * ------ STACK ------
+ * It is a linear data structure, in which insertion and deletion only allowed at the end, called the top of the stack.
+ *
+ * When we defined a stack as an abstract data types, then we are only interested in know the stack operations.
+ *
+ * Operations in stack:
+ * Push :
+ * Pop :
+ * Top lor peek : tell the what element is present in particular index.
+ * issize :
+ * isempty :
+ *
+ * First in First Out.
+ * First in Last Out.
+ * Last in Last Out.
+ * Last in First Out -> stack
+ *
+ */
+class Stack
+{
+    int *arr;
+    int size;
+    int top;
+
+public:
+    Stack(int s)
+    {
+        size = s;
+        top = -1;
+        arr = new int[s];
+    }
+
+    void push(int value)
+    {
+        if (top == size - 1)
+        {
+            cout << "stack overflow" << endl;
+        }
+        else
+        {
+            top++;
+            arr[top] = value;
+            cout << "Pushed " << value << " into the stack \n";
+        }
+    }
+
+    void pop()
+    {
+        if (top == -1)
+        {
+            cout << "stack underflow." << endl;
+        }
+        else
+        {
+            top--;
+            cout << "Element " << arr[top + 1] << " Popped succesfully." << endl;
+        }
+    }
+
+    int peek()
+    {
+        if (top == -1)
+        {
+            cout << "stack is empty" << endl;
+            return -1;
+        }
+        else
+        {
+            return arr[top];
+        }
+    }
+
+    bool isEmpty()
+    {
+        return top == -1;
+    }
+
+    int isSize()
+    {
+        return top + 1;
+    }
+};
+
+int main()
+{
+    int arr[5] = {1, 2, 3, 4, 5};
+    Stack S(5);
+    S.push(5);
+    S.push(6);
+    S.push(7);
+}
