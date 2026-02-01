@@ -137,7 +137,7 @@ int removeConsecutiveSame(vector<string> v)
 }
 
 // Q. Check either parenthesis is valid or not.
-bool parenthesisValidOrNot(string str)
+bool checkParenthesIsValidOrNot(string str)
 {
     /**
      * str = ((())())
@@ -164,8 +164,170 @@ bool parenthesisValidOrNot(string str)
     return s.empty();
 }
 
+// Q. minimum number of parenthesis required to add to make valid parenthesis.
+int minimumAddToMakeValidParenthesis(string s)
+{
+    stack<char> st;
+    int count = 0;
+    for (int i = 0; i < s.size(); i++)
+    {
+        if (s[i] == '(')
+        {
+            st.push(s[i]);
+        }
+        else
+        {
+            if (st.empty())
+            {
+                count++;
+            }
+            else
+            {
+                st.pop();
+            }
+        }
+    }
+    return count + st.size();
+}
+
+// Q. Valid Parenthesis.
+int validParenthesis(string s)
+{
+    /**
+     * s = (()){}[()]
+     * Check either the above string is valid or not.
+     */
+    stack<char> st;
+    for (int i = 0; i < s.size(); i++)
+    {
+        // Opening Brackets.
+        if (s[i] == '(' || s[i] == '{' || s[i] == '[')
+        {
+            st.push(s[i]);
+        }
+        // Closing Bracket.
+        else
+        {
+            // Check either stack is empty or not.
+            if (st.empty())
+            {
+                return 0;
+            }
+            else if (s[i] == ')')
+            {
+                if (st.top() != '(')
+                {
+                    return 0;
+                }
+                else
+                {
+                    st.pop();
+                }
+            }
+            else if (s[i] == '}')
+            {
+                if (st.top() != '{')
+                {
+                    return 0;
+                }
+                else
+                {
+                    st.pop();
+                }
+            }
+            else
+            {
+                if (st.top() != '[')
+                {
+                    return 0;
+                }
+                else
+                {
+                    st.pop();
+                }
+            }
+        }
+    }
+    return st.empty();
+}
+
+// Q. Background string compare.
+void backgroundStringCompare(string s1, string s2)
+{
+    /**
+     * str1 = ab#c
+     * str2 = ad#c
+     * Where, # -> represent Backspace.
+     * If we saw the #, then we need to remove the one character from behind, then compare the two string if matched or not.
+     */
+}
+
+// Q. Print Bracket Number.
+vector<int> printBracketNumber(string s)
+{
+    /***
+     * s = (aa(bdc))p(de)
+     *
+     */
+    int count = 0;
+    stack<int> st;
+    vector<int> ans;
+    for (int i = 0; i < s.size(); i++)
+    {
+        // Opening Bracket and Closing Bracket.
+        if (s[i] == '(')
+        {
+            count++;
+            st.push(count);
+            ans.push_back(count);
+        }
+        // Closing Bracket.
+        else if (s[i] == ')')
+        {
+            ans.push_back(st.top());
+            st.pop();
+        }
+    }
+    return ans;
+}
+
+/**
+ *
+ *  Q. Get minimum at pop.
+ *
+ */
+stack<int> push(int arr[], int n)
+{
+    stack<int> st;
+    for (int i = 0; i < n; i++)
+    {
+        if (i == 0)
+        {
+            st.push(arr[i]);
+        }
+        else
+        {
+            st.push(min(arr[i], st.top()));
+        }
+    }
+    return st;
+}
+void getMinimumAtPop(stack<int> s)
+{
+    /**
+     * [2, 1, 3, 5, 0, 6]
+     */
+    while (!s.empty())
+    {
+        cout << s.top() << " " << endl;
+        s.pop();
+    }
+}
+
 //
 int main()
 {
-    //
+    string str = "((((()))))())";
+    cout << checkParenthesIsValidOrNot(str) << endl;
+    return 0;
 }
