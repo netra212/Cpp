@@ -20,6 +20,8 @@ using namespace std;
  * Last in First Out -> stack
  *
  */
+
+//  Implementation of stack using Arrays.
 class Stack
 {
     int *arr;
@@ -27,11 +29,13 @@ class Stack
     int top;
 
 public:
+    bool flag;
     Stack(int s)
     {
         size = s;
         top = -1;
         arr = new int[s];
+        flag = 1;
     }
 
     void push(int value)
@@ -45,6 +49,7 @@ public:
             top++;
             arr[top] = value;
             cout << "Pushed " << value << " into the stack \n";
+            flag = 0;
         }
     }
 
@@ -58,6 +63,10 @@ public:
         {
             top--;
             cout << "Element " << arr[top + 1] << " Popped succesfully." << endl;
+            if (top == -1)
+            {
+                flag = 1;
+            }
         }
     }
 
@@ -85,11 +94,99 @@ public:
     }
 };
 
+// Implementation stack using LinkedList.
+class Node
+{
+public:
+    int data;
+    Node *next;
+
+    Node(int value)
+    {
+        data = value;
+        next = NULL;
+    }
+};
+
+class StackNode
+{
+    Node *top;
+    int size; // tell the actual size of stack.
+
+public:
+    StackNode()
+    {
+        top = NULL;
+        size = 0; // Initially size of stack is zero.
+    }
+
+    void push(int value)
+    {
+        Node *temp = new Node(value);
+        if (temp == NULL)
+        {
+            cout << "stack Overflow. " << endl;
+        }
+        else
+        {
+            temp->next = top;
+            top = temp;
+            size++;
+            cout << "Pushed  " << value << " into the stack " << endl;
+        }
+    }
+
+    void pop()
+    {
+        if (top == NULL)
+        {
+            cout << "stack underflow. " << endl;
+            return;
+        }
+        else
+        {
+            Node *temp = top;
+            cout << "Popped " << top->data << " from the stack. " << endl;
+            top = top->next;
+            delete temp;
+            size--;
+        }
+    }
+
+    int peek()
+    {
+        if (top == NULL)
+        {
+            cout << "stack is empty" << endl;
+            return -1;
+        }
+        else
+        {
+            return top->data;
+        }
+    }
+
+    bool IsEmpty()
+    {
+        return top == NULL or top == -1;
+    }
+
+    int IsSize()
+    {
+        return size;
+    }
+};
+
 int main()
 {
     int arr[5] = {1, 2, 3, 4, 5};
-    Stack S(5);
-    S.push(5);
-    S.push(6);
-    S.push(7);
+    Stack stack(5);
+    int value = stack.isEmpty();
+    if (stack.flag == 0)
+    {
+        cout << value << endl;
+    }
+    stack.push(5);
+    stack.push(6);
+    stack.push(7);
 }
