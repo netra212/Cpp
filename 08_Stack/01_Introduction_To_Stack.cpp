@@ -1,4 +1,5 @@
 #include <iostream>
+#include <stack>
 using namespace std;
 
 /**
@@ -180,13 +181,21 @@ public:
 int main()
 {
     int arr[5] = {1, 2, 3, 4, 5};
-    Stack stack(5);
-    int value = stack.isEmpty();
-    if (stack.flag == 0)
+    Stack stack1(5);
+    int value = stack1.isEmpty();
+    if (stack1.flag == 0)
     {
         cout << value << endl;
     }
-    stack.push(5);
-    stack.push(6);
-    stack.push(7);
+    stack1.push(5);
+    stack1.push(6);
+    stack1.push(7);
+
+    // stack STL;
+    stack<int> s1;
+    s1.push(6);
+    s1.push(16);
+    s1.push(26);
+    cout << s1.size() << endl;
+    cout << s1.top() << endl;
 }
