@@ -78,6 +78,116 @@ int timeRequiredToBuyTicket(queue<int> &tickets, int n){
 }
 
 // Implement queue using stack. 
+class Queue{
+    stack<int> st1; // push
+    stack<int> st2; // pop
+public:
+    bool empty(){
+        return st1.empty() && st2.empty();
+    }
+
+    void push(int x){
+        st1.push(x);
+    }
+
+    void pop(){
+        if(empty){
+            return 0;
+        }
+        else if(!st2.empty()){
+            int element = st2.top();
+            st2.pop();
+            return element;
+        }else{
+            while(!st1.empty()){
+                st2.push(st1.top());
+                st1.pop();
+            }
+            int element = st2.pop();
+            st2.pop();
+            return element;
+        }
+    }
+
+    int peek(){
+        if(empty()){
+            return 0;
+        }
+        if(!st2.empty()){
+            return st2.top();
+        }else{
+            while(!st1.empty()){
+                st2.push(st1.top());
+                st1.pop();
+            }
+        }
+        return st2.top();
+    }
+};
+
+// Implement stack using Queue. 
+class StackViaQueue{
+public:
+    queue<int> q1;
+    queue<int> q2;
+
+    StackViaQueue(){
+
+    }
+
+    bool empty(){
+        return q1.empty() && q2.empty();
+    }
+
+    void push(int x){
+        // Base Condition
+        if(empty()){
+            q1.push(x);
+            // Jun queue ma element huncha, tesma push huncha. 
+        }else if(q1.empty()){
+            q2.push(x);
+        }else{
+            q1.push(x);
+        }
+    }
+
+    int pop(){
+        if(empty()){
+            return 0;
+        }
+        else if(q1.empty()){
+            while(q2.size() > 1){
+                q1.push(q2.front());
+                q2.pop();
+            }
+
+            int element = q2.front();
+            q2.pop();
+            return element;
+        }else{
+            if(q2.empty()){
+            while(q1.size() > 1){
+                q2.push(q1.front());
+                q1.pop();
+            }
+
+            int element = q1.front();
+            q1.pop();
+            return element;
+        }
+    }
+
+    int top(){
+        if(empty()){
+            return 0;
+        }else if(q1.empty()){
+            return q2.back();
+        }else{
+            return q1.back();
+        }
+    }
+};
+
 
 int main(){
 
