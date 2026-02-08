@@ -91,6 +91,60 @@ public:
     }
 };
 
+// Implementing Queue via LinkedList. 
+class Node{
+    
+public:
+    int data;
+    Node *next;
+
+    Node(int value){
+        data = value;
+        next = NULL;
+    }
+};
+
+class Queue1{
+    Node *front;
+    Node *rear;
+    public:
+
+    Queue1(){
+        front = rear = NULL;
+    }
+    bool isEmpty(){
+        return front == NULL;
+    }
+    void push(int x){
+        if(isEmpty()){
+            front == new Node(x);
+            rear = front;
+            return;
+        }else{
+            rear->next = new Node(x);
+            rear  = rear + 1;
+        }
+    }
+    void pop(){
+        if(isEmpty()){
+            cout << "Queue underflow\n";
+            return;
+        }else{
+            Node *temp = front;
+            front  = front -> next;
+            delete temp;
+        }
+    }
+    int start(){ // start returns the front's data. 
+        if(isEmpty()){
+            cout << "Queue underflow or empty";
+            return -1;
+        }else{
+            return front->data;
+        }
+    }
+};
+
 
 int main()
 {
