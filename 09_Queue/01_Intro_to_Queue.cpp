@@ -1,4 +1,5 @@
 #include <iostream>
+#include <queue>
 using namespace std;
 
 class Queue
@@ -145,7 +146,6 @@ class Queue1{
     }
 };
 
-
 int main()
 {
     Queue q(5);
@@ -155,8 +155,24 @@ int main()
     q.pop();
     q.pop();
     q.pop();
-    int x = q.start();
-    if(!q.isEmpty()){
-        cout << x << " ";
-    }
+   
+    // Implementing queue with STL. 
+    queue<int> q;
+    q.push(10);
+    q.push(40);
+
+    // delete
+    q.pop();
+
+    // front element. 
+    cout << q.front() << endl;
+
+    // back element. 
+    cout << q.back() << endl;
+
+    // size
+    cout << q.size() << endl;
+
+    // empty
+    cout << q.empty() << endl;
 }
