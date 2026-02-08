@@ -301,13 +301,13 @@ stack<int> push(int arr[], int n)
     stack<int> st;
     for (int i = 0; i < n; i++)
     {
-        if (i == 0)
+        if (i == 0) // initially stack will be empty.
         {
             st.push(arr[i]);
         }
         else
         {
-            st.push(min(arr[i], st.top()));
+            st.push(min(arr[i], st.top())); // only push the minimum elements.
         }
     }
     return st;
