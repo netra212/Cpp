@@ -2,6 +2,7 @@
 #include <stack>
 #include <vector>
 #include <queue>
+#include <dequeue>
 using namespace std;
 
 /**
@@ -189,7 +190,9 @@ class DeqeueViaArray{
 
 
 int main(){
-    //
+    dequeue<int> d;
+    d.push_back(5);
+    d.pop_back(3);
 }
 
 
