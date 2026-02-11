@@ -115,6 +115,79 @@ class Dequeue{
     }
 };
 
+
+// Implementing Deque using Array
+class DeqeueViaArray{
+    int front, rear, size;
+    int *arr;
+    public:
+    Deque(int n){
+        size = n;
+        arr = new int[n];
+        front = rear - 1;
+    }
+
+    void isEmpty(){
+        return front == -1;
+    }
+
+    bool isFull(){
+        return (rear + 1) % size == front;
+    }
+
+    void push_front(int x){
+        if(isEmpty()){
+            front = rear = 0;
+            arr[0] = x;
+            return;
+        }else if(isFull()){
+            return;
+        }else{
+            front = (front - 1 + size)%size;
+            arr[front] = x;
+        }
+    }
+
+    void push_back(int x){
+        if(isEmpty()){
+            front = rear = 0;
+            arr[0] = x;
+        }else if(isFull()){
+            return;
+        }else{
+            rear = (rear + 1) % size;
+            arr[rear] = x;
+            return;
+        }
+    }
+
+    void pop_front(){
+        if(isEmpty()){
+            return;
+        }else{
+            if(front == rear){
+                front = rear = -1;
+            }else{
+                front = (front + 1) % size;
+            }
+        }
+    }
+
+    void pop_front(){
+        if(isEmpty()){
+            return;
+        }
+        else{
+             if(front == rear){
+                front = rear = -1;
+            }else{
+                rear = (rear  1 + size) % size;
+            }
+        }
+    }
+}
+
+
 int main(){
     //
 }
