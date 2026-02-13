@@ -31,6 +31,36 @@ vector<int> levelOrderTraversal(Node *root){
     }
 }
 
+// Q. size of binary tree. 
+void sizeBinaryTree(Node *root, int &count){
+    /**
+    If we need node, then increase count++
+    then go to left side and right side. 
+    */
+    if(root == NULL){
+        return;
+    }
+    count++;
+    sizeBinaryTree(root->left, count);
+    sizeBinaryTree(root->right, count);
+}
+
+// Another method to calculate the size of binary trees.
+int totalNodes(Node *root){
+    if(root == NULL){
+        return 0;
+    }
+    return (1 + totalNodes(root->left) + totalNodes(root->right));
+}
+
+// Q. Sum of Binary trees
+int sumBinaryTrees(Node *root){
+    if(root == NULL){
+        return 0;
+    }
+    return (root->data + sumBinaryTrees(root->left) + sumBinaryTrees(root->right));
+}
+
 int main(){
 
 }
