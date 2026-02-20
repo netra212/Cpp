@@ -104,11 +104,66 @@ vector<int> diagonalTraversalBT(Node *root){
 }
 
 /**
-Boundary Traversal.
- */
+# Boundary Traversal.
+*/
+void LeafSub(Node *root, vector<int> &ans){
+    // Base case.
+    if(!root || (!root->left && !root->right)){
+        return;
+    }
+    ans.push_back(root->data);
+    if(root->left){
+        LeftsSub(root->left, ans);
+    }else{
+        LeftsSub(root->right, ans);
+    }
+}
+void Leaf(Node *root, vector<int> &ans){
+    if(!root){
+        return;
+    }
 
-boundaryTraversal(Node *root){
+    // leaf node. 
+    if(!root->left && !root->right){
+        ans.push_back(root->data);
+        return;
+    }
 
+    // Left part. 
+    Leaf(root->left, ans);
+
+    // Right. 
+    Leaf(root->right, ans);
+}
+
+void RightSub(Node *root, vector<int> &ans){
+    // base. 
+    if(!root || (!root->left && !root->right)){
+        return;
+    }
+    // Right part. 
+    if(root->right){
+        RightSub(root->right, ans);
+    }else{
+        RightSub(root->left, ans);
+    }
+
+    ans.push_back(root->data);
+}
+
+vector<int> boundaryTraversal(Node *root){
+    vector<int> ans;
+    // Root element. 
+    ans.push_back(root->data);
+    // Left Boundary ko push to answer except leaf. 
+    LeftsSub(root->left, ans);
+    // Insert the leaf. 
+    if(root->left || root->right){
+        Leaf(root, ans);
+    }
+    // Insert the Right Boundary in reverse order except leaf node. 
+    RightSub(root->right, ans);
+    return ans;
 }
 
 int main(){
