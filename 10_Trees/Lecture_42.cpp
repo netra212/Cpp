@@ -71,6 +71,25 @@ long long treePathsSum(Node *root){
 /**
 Maximum difference between Node and its ancestor. 
 */
+void Find(Node *root, int Anc_max, int &Diff){
+    if(!root){
+        return;
+    }
+
+    Diff = max(Diff, Anc_max-root->data);
+
+    Anc_max = max(Anc_max, root->data);
+
+    Find(root->left, root->data, Diff);
+    Find(root->right, root->data, Diff);
+}
+
+int maxDiff(Node *root){
+    int Diff = 0;
+    Find(root->left, root->data, Diff);
+    Find(root->right, root->data, Diff);
+    return Diff;
+}
 
 int main(){
    
