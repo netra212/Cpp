@@ -85,10 +85,40 @@ void Find(Node *root, int Anc_max, int &Diff){
 }
 
 int maxDiff(Node *root){
-    int Diff = 0;
+    int Diff = INT_MIN;
     Find(root->left, root->data, Diff);
     Find(root->right, root->data, Diff);
     return Diff;
+}
+/**
+ *
+ * Finding the Largest value in the each level
+ */
+
+
+/**
+ *
+ * Calculate the Pre-Order Traversal (Iterative) Ways. 
+ */
+vector<int> preOrder(Node *root){
+    vector<int>ans;
+    stack<Node *> s;
+    s.push(root); // printing root element initially. 
+    while(!s.empty()){
+        // print top element and also pop it. 
+        temp = s.top();
+        s.pop();
+        // push right element. 
+        if(temp->right){
+            s.push(temp->right);
+        }
+        // push left element. 
+        if(temp->left){
+            s.push(temp->left);
+        }
+        ans.push_back(temp->data);
+    }
+    return ans;
 }
 
 int main(){
