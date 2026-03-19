@@ -107,6 +107,13 @@ int sumBT(Node *root){
     return root->data + sumBT(root->left->data) + sumBT(root->right->data);
 }
 
+// Height of binary tree. 
+int heightBT(Node *root){
+    if(!root) return 0;
+    if(!root->left && !root->right) return 1;
+    return 1 + max(heightBT(root->left, root->right));
+}
+
 int main(){
     Node *root = BinaryTree();
     cout << "Inorder Traversal: ";
