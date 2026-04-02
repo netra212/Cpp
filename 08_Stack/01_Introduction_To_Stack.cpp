@@ -11,7 +11,7 @@ using namespace std;
  * Operations in stack:
  * Push :
  * Pop :
- * Top lor peek : tell the what element is present in particular index.
+ * Top or peek : tell the what element is present in particular index.
  * issize :
  * isempty :
  *
