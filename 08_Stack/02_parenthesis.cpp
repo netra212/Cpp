@@ -312,6 +312,7 @@ stack<int> push(int arr[], int n)
     }
     return st;
 }
+
 void getMinimumAtPop(stack<int> s)
 {
     /**
