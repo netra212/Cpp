@@ -99,6 +99,12 @@ int maxDiff(Node *root){
 /**
  *
  * Calculate the Pre-Order Traversal (Iterative) Ways. 
+ * Approachs:
+ 1. stack: first Root element laii stack ma halne. 
+ 2. till stack empty:
+    - print top element and also pop it. 
+    - push right element. 
+    - push left element. 
  */
 vector<int> preOrder(Node *root){
     vector<int>ans;
@@ -121,6 +127,11 @@ vector<int> preOrder(Node *root){
     return ans;
 }
 
+
+/**
+# Post Order traversal (Iterative ways)
+
+*/
 int main(){
    
 }
