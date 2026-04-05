@@ -64,6 +64,40 @@ bool search(Node *root, int x){
     }
 }
 
+/**
+# Given a Binary search tree. The task is to find the minimum valued element in this given BST. 
+*/
+int minValue(Node *root){
+    if(!root) return -1; 
+    return !root->left ? root->data : minValue(root->left);
+}
+
+/**
+# Kth Largest element in BST. 
+Your task is to complete the function which will return the Kth largest element without doing any modification in Binary search tree.
+*/
+void Find(Node *root, int &k, int &ans){
+    if(!root || k<0){
+        return;
+    }
+    Find(root->right, k, ans);
+    k--;
+    if(k==0){
+        ans = root->data;
+        return;
+    }
+    Find(root->left, k, ans);
+}
+int kthLargestElementInBST(Node *root, int K){
+    int ans;
+    Find(root, K, ans);
+    return ans;
+}
+
+// Kth smallest. 
+// Insert a Node in a Binary search tree. 
+// Sum of Kth smallest element in BST. 
+
 int main(){
     int arr[10] = {10, 13, 4, 8, 11, 19, 2, 7, 18, 23};
     Node *root = NULL;
