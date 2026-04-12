@@ -54,3 +54,61 @@ Node *deleteNode(Node *root, int x){
         root->right = deleteNode(root->right, x);
     }
 }
+
+/**
+# Balanced Binary search tree. 
+-1 <= (left_height - right_height) <= 1
+*/
+
+class Node{
+    public:
+        int data;
+        Node *left, *right;
+
+        Node(int value){
+            data = value;
+            left = right = NULL;
+        }
+}
+
+Node *CreateBBST(vector<int> &v, int start, int end){
+
+    if(start > end){
+        return NULL;
+    }
+
+    int mid = start + (end - start)/2;
+    Node *root = new Node(v[mid]);
+
+    root->left = CreateBBST(v, start, mid-1);
+    root->right = CreateBBST(v, mid + 1, end);
+    return root;
+}
+
+void inOrder(Node *root){
+    if(!root){
+        return;
+    }
+
+    inOrder(root->left);
+    cout << root->data << " ";
+    inOrder(root->right);
+}
+
+int main(){
+    int n;
+    cin >> n;
+    vector<int> v(n);
+    for(int i = 0; i < n; i++){
+        cin >> v[i];
+    }
+
+    // First: sort the arrays. 
+    sort(v.begin(), v.end());
+
+    int start = 0, end = n-1;
+    Node *root = CreateBBST(v, start, end);
+    inOrder(root);
+    return 0;
+}
+
