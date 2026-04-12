@@ -62,14 +62,14 @@ Node *deleteNode(Node *root, int x){
 
 class Node{
     public:
-        int data;
-        Node *left, *right;
+    int data;
+    Node *left, *right;
 
-        Node(int value){
-            data = value;
-            left = right = NULL;
-        }
-}
+    Node(int value){
+        data = value;
+        left = right = NULL;
+    }
+};
 
 Node *CreateBBST(vector<int> &v, int start, int end){
 
@@ -93,6 +93,16 @@ void inOrder(Node *root){
     inOrder(root->left);
     cout << root->data << " ";
     inOrder(root->right);
+}
+
+void preOrder(Node *root){
+    if(!root){
+        return;
+    }
+
+    cout << root->data << " ";
+    preOrder(root->left);
+    preOrder(root->right);
 }
 
 int main(){
