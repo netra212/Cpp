@@ -21,6 +21,12 @@ int main(){
     // 5: Is Heap empty
     cout << p.empty();
     // min heap
+    priority_queue<int, vector<int>, greater<int>>p1;
+    p1.push(4);
+    p1.push(8);
+    p1.push(2);
+    p1.push(7);
+    cout << p1.size();
     return 0;
 }
 
