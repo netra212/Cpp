@@ -43,6 +43,25 @@ void heapSort(int arr[], int n){
     }
 }
 
+/**
+Question: 2: Calculate the Height of the heap. 
+Level: basic
+*/
+int heapHeight(int n, int arr[]) {
+    // code here
+    if(n == 0){
+        return 0;
+    }
+    
+    // If heap contains single element means height 1. 
+    if(n==1){
+        return 1;
+    }
+    
+    return (int)floor(log2(n));
+}
+
 int main(){
 
 }
+
