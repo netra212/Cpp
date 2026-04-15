@@ -6,6 +6,65 @@ bool sortBySecond(pair<int int> a, pair<int, int> b){
     return a.first < b.second || (a.second == b.second && a.first < b.first); 
 }
 
+/**
+# Merge sorted arrays. 
+Question: You are given K sorted integers arrays in a form of 2D integers matrix A of size K X N. You need to merge them into a single arrays and return it.
+Example Input:
+Input: 
+A = [
+    [1, 2, 3],
+    [2, 4, 6],
+    [0, 9, 10]
+]
+Example Output:
+[0, 1, 2, 2, 3, 4, 6, 9, 10]
+*/
+void mergeSortedArrays(vector<vector<int>> &A){
+    vector<int> ans; 
+    int row = A.size();
+    int column = A[0].size();
+
+    priority_queue<pair<int, pair<int, int>>, vector<pair <int, pair<int, int>>>, greater<pair<int, pair<int, int>>>> minHeap; // value, row, column_number.
+    // So need to make an pair like this pair<int, pair<int, int> p;
+
+    // Insert first column into minHeap;
+    for(int i = 0; i < row; i++){
+        minHeap.push(make_pair(A[i][0], make_pair(i, 0)));
+    }
+
+    pair<int, pair<int, int>> p;
+    while(!minHeap.empty()){
+        // get minimum element from the top of the heap. 
+        p = minHeap.top();
+
+        // Insert a value into a `ans` vector. 
+        ans.push_back(p.first);
+        row = p.second.first;
+        column = p.second.second;
+        minHeap.pop();
+        // Insert the next element of that row, first check whether that row is exhausted or not. 
+        if(col < A[0].size()-1){
+            minHeap.push(make_pair(A[row][col+1]), make_pair(row, col+1));
+        }
+    }
+    return ans;
+}
+
+/**
+# Huffman Encoding. 
+Suppose..,
+String S = A B B C D A B D ..... 
+A = 20, A -> 0100001 -> 2^6 + 1-> 64 + 1 => 65
+B = 4   B -> 8 Bits
+C = 15  C -> 8 Bits
+D = 9   D -> 8 Bits
+E = 2   E -> 8 Bits
+And So on....
+*/
+
+
+
+
 int main(){
     // Creating a Pair. 
 
