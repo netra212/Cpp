@@ -2,6 +2,10 @@
 #include <vector>
 using namespace std;
 
+bool sortBySecond(pair<int int> a, pair<int, int> b){
+    return a.first < b.second || (a.second == b.second && a.first < b.first); 
+}
+
 int main(){
     // Creating a Pair. 
 
@@ -42,6 +46,7 @@ int main(){
     }
 
     // Ascending Order on the basis of second. 
+    sort(v.begin(), v.end(), sortBySecond);
     // Descending Order on the basis of second. 
     return 0;
 }
