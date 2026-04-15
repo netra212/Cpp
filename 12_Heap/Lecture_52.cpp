@@ -23,6 +23,26 @@ int main(){
     pair <int, int> p;
     p = make_pair(10, 20);
     cout << p.first << " " << p.second;
+
+    vector <pair<int, int>> v;
+    v.push_back(make_pair(10, 20));
+    v.push_back(make_pair(4, 7));
+    v.push_back(make_pair(4, 9));
+    v.push_back(make_pair(6, 9));
+    v.push_back(make_pair(1, 21));
+
+    // Ascending order: On the basis of first. 
+    sort(v.begin(), v.end());
+
+    // Descending Order: On the basis of first. 
+    sort(v.rbegin(), v.rend());
+
+    for(int i = 0; i < 5; i++){
+        cout << v[i].first << " " << v[i].second << endl;
+    }
+
+    // Ascending Order on the basis of second. 
+    // Descending Order on the basis of second. 
     return 0;
 }
 
