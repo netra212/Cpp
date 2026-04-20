@@ -45,7 +45,7 @@ void heapSort(int arr[], int n){
 
 /**
 Question: 2: Calculate the Height of the heap. 
-Level: basic
+Level: Basic
 */
 int heapHeight(int n, int arr[]) {
     // code here
@@ -61,6 +61,57 @@ int heapHeight(int n, int arr[]) {
     return (int)floor(log2(n));
 }
 
+/**
+Question: 
+Given an array, arr[] of rope lengths, connect all ropes into a single rope with the minimum total cost. The cost to connect two ropes is the sum of their lengths. 
+Level: Medium
+
+# Approach:-
+1. Create a minHeap. 
+2. then pop every 2 elements. 
+*/
+int minCost(vector<int>& arr) {
+    int cost = 0;
+    priority_queue<int, vector<int>, greater<int>>p;
+    for(int i = 0; i < arr.size(); i++){
+        p.push(arr[i]);
+    }
+    
+    int first, second;
+    while(p.size() != 1){
+        first = p.top();
+        p.pop();
+        second = p.top();
+        p.pop();
+        first += second;
+        cost += first;
+        p.push(first);
+    }
+    return cost;
+}
+
+/**
+# Magician and Chocolates
+
+Given N bags, each bag contains Bi chocolates. There is a kid and a magician. In one unit of time, kid chooses a random bag i, eats Bi chocolates, then the magician fills the ith bag with floor(Bi/2) chocolates.
+
+Find the maximum number of chocolates that kid can eat in A units of time.
+
+NOTE: floor() function returns the largest integer less than or equal to a given number.
+Return your answer modulo 109+7
+
+
+*/
+int nchoc(int A, int* B, int n2) {
+
+}
+
+
+/**
+Questions: 
+Given an array arr[] of positive integers and an integer k, Your task is to return k largest elements in decreasing order. 
+Level: Medium
+*/
 int main(){
 
 }

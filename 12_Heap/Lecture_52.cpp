@@ -62,9 +62,6 @@ E = 2   E -> 8 Bits
 And So on....
 */
 
-
-
-
 int main(){
     // Creating a Pair. 
 
