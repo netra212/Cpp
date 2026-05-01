@@ -39,6 +39,49 @@ int findCenter(vector<vector<int>> & edges){
     return edges[1][0];
 }
 
+/**
+Question:
+Number of Provinces. 
+Given an undirected graph with V vertices. We say two vertices u and v belongs to a single province. If there is a path from u to v or v to u. Your task is to find the number of provinces. 
+
+NOTE: A province is a group of directly or indirectly connected cities and no other cities outside the group. 
+
+Example 1:
+Input: 
+[
+    [1, 0, 1],
+    [0, 1, 0],
+    [1, 0, 1]
+]
+*/
+
+void DFS(vector<vector<int> &adj, vector<bool> &visited, int node){
+    if(visited){
+        return;
+    }
+
+    visited[node] = 1;
+
+    for(int i = 0; i < adj[node].size(); i++){
+        if(adj[node][i]){
+            DFS(adj, visited, i);
+        }
+    }
+    return;
+}
+
+int numProvinces(vector<vector<int>> adj, int V){
+    int count = 0;
+    vector<bool> visited(V, 0);
+
+    for(int i = 0; i < V; i++){
+        if(!visited[i]){
+            count++;
+            DFS(adj, visited, i);
+        }
+    }
+    return count;
+}
 
 int main(){
 
