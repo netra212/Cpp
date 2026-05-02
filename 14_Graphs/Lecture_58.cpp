@@ -83,6 +83,80 @@ int numProvinces(vector<vector<int>> adj, int V){
     return count;
 }
 
+/**
+Question: Two Teams. 
+Problem Description:
+There are A people numbered 1 to A in a football academy. 
+
+The coach of the academy wants to make two teams (not necessasy of equal size) but unfortunately, not all people get along, and several refuse to be put on the same team as that of their elements. 
+
+Given a 2-D array B of size M x 2 denoting the enemies i.e., B[i][0] and B[i][1] both are enemies of each other. 
+
+Return 1 if it possible to make exactly two teams else return 0. 
+
+Example 1:
+Input 1:
+A = 5
+B = [
+    [1, 2],
+    [2, 3],
+    [1, 5],
+    [2, 4]
+]
+
+Input 2:
+A = 4
+B = [
+    [1, 4],
+    [3, 1],
+    [4, 3],
+    [2, 1]
+]
+*/
+
+/**
+Question:
+Detect Cycle in an Undirected graph. 
+
+Given an undirected graph with V vertices and E edges, check whether it contains any cycle or not. Graph is in the form of adjacency list where adj[i] contains all the nodes ith node is having edge with. 
+
+Example 1:
+Input
+V = 5, E = 5
+adj = {{1}, {0, 2, 4}, {1, 3}, {2, 4}, {1, 3}}
+Output: 1
+*/
+
+// Function to detect cycle in an undirected graph. 
+bool DetectCycle(vector<int> adj[], int node, int parent, vector<bool>){
+    visited[node] = 1;
+    for(int i = 0; i < adj[node].size(); i++){
+        // If its adjancent are not visited. 
+        if(!visited[adj[node][i]]){
+            if(DetectCycle(adj, adj[node][i], node, visited)){
+                return 1;
+            }
+        }
+        // If its adjanced are visited. 
+        else if(parent != adj[node][i]){
+            return 1;
+        }
+    }
+    return 0;
+}
+
+bool isCycle(int V, vector<int> adj[]){
+    vector<bool> visited(V, 0);
+    for(int i = 0; i < V; i++){
+        if(!visited[i]){
+            if(DetectCycle(adj, i, -1, visited)){
+                return 1;
+            }
+        }
+    }
+    return 0;
+}
+
 int main(){
 
 }
