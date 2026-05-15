@@ -19,7 +19,6 @@ int minimumStep(int n){
     return count_edge;
 }
 
-
 /**
 Question:
 Find Center of star graph. 

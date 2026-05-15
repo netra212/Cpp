@@ -1,6 +1,9 @@
 #include <iostream>
 using namespace std;
 
+/**
+BFS: traverse equ-distance from the source node. 
+*/
 void bfs(int source, unordered_map<int, vector<int>> graph, int n){
     queue <int> q;
     vector <int> visited(n+1);
