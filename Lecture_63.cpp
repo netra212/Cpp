@@ -62,6 +62,41 @@ vector<int> shortestPath(vector<vector<int>> &edges, int N, int M, int src){
    return distance;
 }
 
+// Dijkstra Algorithm. 
+vector<int> dijkstraAlgorithm(int V, vector<vector<int>> adj[], int src){
+    vector<int> dist(V);
+    for(int i = 0; i < V; i++){
+        dist[i] = -1;
+    }
+
+    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> q;
+    // first = weight/distance. 
+    // second = node. 
+    q.push({0, src});
+
+    int Node, i, j, step;
+    while(!q.empty()){
+        step = q.top().first;
+        Node = q.top().second;
+        q.pop();
+
+        // Node step. 
+        // Distance ko value == -1 or not equal to -1.
+        if(dist[Node] != -1){
+            continue;
+        }
+        else{
+            dist[Node] = step;
+        }
+
+        for(int j = 0; j < adj[Node].size(); i++){
+            if(dist[adj[Node][j][0]] == -1){
+                q.push({step + adj[Node][j][1], adj[Node][j][0]});
+            }
+        }
+    }
+    return dist;
+}
 
 int main(){
 

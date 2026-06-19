@@ -10,7 +10,7 @@ using namespace std;
 3. How to Implement ?
 4. Traversing a Graph. 
     - BFS + Question. 
-    - DFS + Question. 
+    - DFS + Question.  
 5. Cycle Detection. 
 6. Topological sort. 
     - khan's algorithm. 
@@ -52,6 +52,28 @@ vector<int> bfsOfGraph(int V, vector<int> adj[]){
             }
         }
     }
+    return ans;
+}
+
+void DFS(int node, vector<int> adj[], vector<int> &ans, vector<bool> &visited){
+    if(!visited[node]){
+        return;
+    }
+
+    visited[node] = 1;
+    ans.push_back(visited[node]);
+    
+    for(int i = 0; i < adj[node].size(); i++){
+        DFS(adj[node][i], adj, ans, visited);
+    }
+}
+
+vector<int> dfsOfGraph(int V, vector<int> adj[]){
+    vector<bool> visited(V, 0);
+    vector<int> ans;
+
+    DFS(0, adj, ans, visited);
+
     return ans;
 }
 
