@@ -31,12 +31,27 @@ int countNumberHops(int n){
 
 }
 
-// Q3. Minimum Cost Climbing stairs problems. 
-// You are given an integer array cost where cost[i] is the cost of ith step on a staircase. Once you pay the cost, you can either climb one or twp steps. 
-// You can either start from the step with index 0, or the step with index 1. 
-// Return the minimum cost to reach the top of the floor. 
+// Q3. Minimum Cost Climbing stairs problems.
+// You are given an integer array cost where cost[i] is the cost of ith step on a staircase. Once you pay the cost, you can either climb one or twp steps.
+// You can either start from the step with index 0, or the step with index 1.
+// Return the minimum cost to reach the top of the floor.
+int minCost(vector<int> &cost, int n,  vector<int> &dp){
+    if (n<=1) {
+        return 0;
+    } 
+
+    if(dp[n] != -1){
+        return dp[n];
+    }
+
+    // How to reach nth stair at minimum cost.
+     return dp[n] = min(minCost(cost, n-1, dp)+cost[n-1], minCost(cost, n-2, dp)+cost[n-2]);
+}
+
 int minCostClimbingStairs(vector<int> &cost){
-    // minCost(n) = min(cost(n-1)+minCost(n-1), cost(n-2)+minCost(n-2))
+    int n = cost.size();
+    vector<int> dp(n+1, -1);
+    return minCost(cost, n, dp);
 }
 
 
